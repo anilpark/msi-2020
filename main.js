@@ -1,3 +1,5 @@
+import {Joke} from "./Joke";
+
 window.onload = loaded;
 
 const categories = {
@@ -26,47 +28,6 @@ function API() {
             return await res.json();
         }
     }
-}
-
-function Joke(joke, liked) {
-    for(let key in joke) this[key] = joke[key];
-
-    this.liked = liked || false;
-
-    this.insert = () => {
-        document.getElementById('jokeBox').append(new JokeComponent(this));
-    }
-
-    this.updateState = () => {
-        let liked = JSON.parse( localStorage.getItem('liked') );
-        if(!liked) liked = [];
-
-        if(this.liked)
-            liked.splice( liked.findIndex(item => item.id === joke.id), 1 );
-        else
-            liked.push(joke);
-
-        this.liked = !this.liked;
-
-        localStorage.setItem('liked', JSON.stringify(liked));
-    }
-
-    this.insertToLiked = () => {
-        document.querySelector('.liked-jokes-box').append(new LikedJokeComponent(this));
-    }
-
-    this.removeFromLiked = () => {
-        document.querySelector(`#joke-${joke.id}`).remove();
-    }
-}
-
-
-function insertToLikedJokes(joke){
-    document.querySelector('.liked-jokes-box').append(new LikedJokeComponent(joke));
-}
-
-function removeFromLiked(joke){
-    document.querySelector(`#joke-${joke.id}`).remove();
 }
 
 function showJokes() {
@@ -156,71 +117,4 @@ function loaded() {
     document.querySelector('.container').style.display = 'block';
 
     test();
-}
-
-function JokeComponent(obj) {
-    function getJokeCategory() {
-        if(this.categories[0]) return `
-            <div class="joke-category">
-                 <span>${obj.categories[0]}</span>
-            </div>`;
-
-        return '';
-    }
-
-    let component = document.createElement('div');
-    let btn = document.createElement('button');
-
-    btn.innerHTML = 'лайк'
-    btn.onclick = function(){
-        obj.updateState();
-        if(obj.liked) obj.insertToLiked()
-        else obj.removeFromLiked();
-    }
-
-    component.innerHTML = `
-                <div class="joke-inner">
-                    <div class="joke-id">
-                        <a href="#">${obj.id}</a>
-                    </div>
-                    <div class="joke-text">
-                        <span>${obj.value}</span>
-                    </div>
-                    <div class="joke-date">
-                        <span>${obj.updated_at}</span>
-                    </div>
-                   ${getJokeCategory()}
-                </div>
-            `;
-    component.className = 'joke-container';
-    component.prepend(btn);
-
-    return component;
-}
-
-function LikedJokeComponent(obj) {
-    let component = document.createElement('div');
-    let btn = document.createElement('button');
-    btn.innerHTML = 'лайк'
-
-    btn.onclick = function(){
-        obj.updateState();
-        if(obj.liked) obj.insertToLiked()
-        else obj.removeFromLiked();
-    }
-
-    const content = `
-        <div class="joke-inner">
-            <div class="joke-text">
-                <span>${obj.value}</span>
-            </div>
-        </div>
-    `
-
-    component.innerHTML = content;
-    component.className = 'liked-joke-container';
-    component.prepend(btn);
-    component.id = `joke-${obj.id}`;
-
-    return component;
 }
