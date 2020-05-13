@@ -1,4 +1,4 @@
-import {Joke} from "./Joke";
+import {Joke} from "./Joke.js";
 
 window.onload = loaded;
 

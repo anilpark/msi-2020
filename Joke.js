@@ -1,5 +1,5 @@
-import {JokeComponent} from "./Components/JokeComponent";
-import {LikedJokeComponent} from "./Components/LikedJokeComponent";
+import {JokeComponent} from "./Components/JokeComponent.js";
+import {LikedJokeComponent} from "./Components/LikedJokeComponent.js";
 
 export class Joke {
     constructor(joke, liked) {
@@ -24,6 +24,15 @@ export class Joke {
         this.liked = !this.liked;
 
         localStorage.setItem('liked', JSON.stringify(liked));
+    }
+
+    getJokeCategory() {
+        if(this.categories[0]) return `
+            <div class="joke-category">
+                 <span>${obj.categories[0]}</span>
+            </div>`;
+
+        return '';
     }
 
     insertToLiked(){

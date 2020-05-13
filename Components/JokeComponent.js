@@ -1,24 +1,18 @@
-export function JokeComponent(obj) {
-    function getJokeCategory() {
-        if(this.categories[0]) return `
-            <div class="joke-category">
-                 <span>${obj.categories[0]}</span>
-            </div>`;
+import {LikedJokeComponent} from "./LikedJokeComponent.js";
 
-        return '';
-    }
+export class JokeComponent {
+    constructor(obj) {
+        this.$component = document.createElement('div');
+        this.$btn = document.createElement('button');
 
-    let component = document.createElement('div');
-    let btn = document.createElement('button');
+        this.$btn.innerHTML = 'лайк'
+        this.$btn.onclick = function(){
+            obj.updateState();
+            if(obj.liked) obj.insertToLiked();
+            else obj.removeFromLiked();
+        }
 
-    btn.innerHTML = 'лайк'
-    btn.onclick = function(){
-        obj.updateState();
-        if(obj.liked) obj.insertToLiked()
-        else obj.removeFromLiked();
-    }
-
-    component.innerHTML = `
+        this.$component.innerHTML = `
                 <div class="joke-inner">
                     <div class="joke-id">
                         <a href="#">${obj.id}</a>
@@ -29,11 +23,14 @@ export function JokeComponent(obj) {
                     <div class="joke-date">
                         <span>${obj.updated_at}</span>
                     </div>
-                   ${getJokeCategory()}
+                   ${ obj.getJokeCategory() }
                 </div>
             `;
-    component.className = 'joke-container';
-    component.prepend(btn);
+        this.$component.className = 'joke-container';
+        this.$component.prepend(this.$btn);
 
-    return component;
+        return this.$component;
+    }
+
+
 }
