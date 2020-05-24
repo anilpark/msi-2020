@@ -137,11 +137,11 @@ a{
 }
 
 .wrapper{
-  display: none;
+  display: flex;
   width: 100%;
 
   .container{
-    display: flex;
+    display: block;
     width: 100%;
     max-width: 680px;
     margin: 0 auto;

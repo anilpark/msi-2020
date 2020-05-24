@@ -117,8 +117,4 @@ function loaded() {
     btn.onclick = showJokes;
 
     insertLiked();
-
-    document.querySelector('.wrapper').style.display = 'flex';
-
-    test();
 }
