@@ -2,6 +2,14 @@ import {Joke} from "./Joke.js";
 
 window.onload = loaded;
 
+$('.burger').on('click', function(e) {
+    e.preventDefault;
+    $(this).toggleClass('burger-active');
+    $('.favourite-inner').toggleClass('shown');
+    $('.main-container').toggleClass('hidden');
+    $('.bg-shadow').toggleClass('shown');
+});
+
 const categories = {
     get: () => JSON.parse(localStorage.getItem('categories')),
     set: (arr) => {
@@ -31,7 +39,7 @@ function API() {
 }
 
 function showJokes() {
-    let way = document.forms.menu.menuRadio.value;
+    let way = document.forms.form.way.value;
 
     const api = new API();
 
@@ -45,7 +53,7 @@ function showJokes() {
     function getParam() {
         switch (way) {
             case 'category':
-                return document.forms.categories.category.value;
+                return document.forms.form.category.value;
             case 'search':
                 return document.querySelector('#searchReq').value;
             default: return;
@@ -57,7 +65,7 @@ function insertLiked() {
     let liked = JSON.parse( localStorage.getItem('liked') );
     if(liked) liked.forEach(item => {
         let likedJoke = new Joke(item, true);
-        likedJoke.insertToLiked();
+        likedJoke.insertToLikedList();
     });
 }
 
@@ -73,17 +81,19 @@ function clearCategories() {
 }
 
 function insertCategories(value) {
-    let category = document.createElement('input'),
-        label = document.createElement('label'),
-        form = document.forms.categories;
+    let input = document.createElement('input');
+    let div = document.querySelector('#categories-box');
+    let label = document.createElement('label');
 
-    category.type = 'radio';
-    category.name = 'category';
-    category.value = value;
+    input.type = 'radio';
+    input.id = `cat-${value}`
+    input.name = 'category';
+    input.value = value;
 
     label.innerHTML = value;
-    label.prepend(category);
-    form.append(label);
+    label.setAttribute('for',  `${input.id}`);
+    div.append(input);
+    div.append(label);
 }
 
 function test() {
@@ -109,7 +119,7 @@ function loaded() {
         )
     }
 
-    let btn = document.querySelector('#button');
+    let btn = document.querySelector('.get-joke-btn');
     btn.onclick = showJokes;
 
     insertLiked();

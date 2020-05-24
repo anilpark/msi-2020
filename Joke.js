@@ -3,7 +3,7 @@ import {LikedJokeComponent} from "./Components/LikedJokeComponent.js";
 
 export class Joke {
     constructor(joke, liked) {
-        for(let key in joke) this[key] = joke[key];
+        for(let key in joke) this[key] = joke[key]; //we don't expect unused fields from API
 
         this.liked = liked || false;
     }
@@ -12,7 +12,11 @@ export class Joke {
         document.getElementById('jokeBox').append(new JokeComponent(this));
     }
 
-    updateState(){
+    getLastUpdate(){
+        return Math.round( +Date.now()/(3600*1000) - (+new Date(this.updated_at))/(3600*1000) );
+    }
+
+    updateLikedState(){
         let liked = JSON.parse( localStorage.getItem('liked') );
         if(!liked) liked = [];
 
@@ -24,22 +28,19 @@ export class Joke {
         this.liked = !this.liked;
 
         localStorage.setItem('liked', JSON.stringify(liked));
+
+        $(`#joke-${this.id} .heart`).toggleClass('filled');
     }
 
     getJokeCategory() {
-        if(this.categories[0]) return `
-            <div class="joke-category">
-                 <span>${obj.categories[0]}</span>
-            </div>`;
-
-        return '';
+        return this.categories[0] || false;
     }
 
-    insertToLiked(){
+    insertToLikedList(){
         document.querySelector('.liked-jokes-box').append(new LikedJokeComponent(this));
     }
 
-    removeFromLiked(){
+    removeFromLikedList(){
         document.querySelector(`#liked-joke-${this.id}`).remove();
     }
 }

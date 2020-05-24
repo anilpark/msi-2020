@@ -2,48 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link href="Style/layout.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style/components.css">
     <title>Title</title>
-    <script type="module" src="main.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer type="module" src="main.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="menu">
-        <form action="" name="menu">
-            <label>
-                <input checked type="radio" value="random" name="menuRadio">Random
-            </label>
-            <label>
-                <input type="radio" value="category" name="menuRadio">Category
-            </label>
-            <label>
-                <input type="radio" value="search" name="menuRadio">Search
-            </label>
-        </form>
-    </div>
+<section class="wrapper">
+    <main>
+        <div class="bg-shadow"></div>
 
-    <div class="categories-box" id="categories-box">
-        <form name="categories">
+        <div class="container">
+            <header class="header">
+                <h3>MSI 2020</h3>
+            </header>
+            <section class="content-section">
+                <h1>Hey!</h1>
+                <h2>Let’s try to find a joke for you:</h2>
+                <div class="menu">
+                    <form action="" name="form">
+                        <div class="menu-item">
+                            <div class="menu-input-item">
+                                <input id="random-radio" checked type="radio" value="random" name="way">
+                                <label for="random-radio">Random</label>
+                            </div>
+                        </div>
 
-        </form>
-    </div>
+                        <div class="menu-item">
+                            <div class="menu-input-item">
 
-    <div class="search" id="search">
-        <label>Text:
-            <input type="text" id="searchReq" value="monkey">
-        </label>
-    </div>
+                                    <input id="category-radio" type="radio" value="category" name="way">
+                                <label for="category-radio">Category</label>
+                                <div class="categories-box" id="categories-box">
+                                </div>
+                            </div>
 
-    <div id="button">Go</div>
+                        </div>
 
-    <div class="jokes" id="jokeBox">
+                        <div class="menu-item">
+                            <div class="menu-input-item">
 
-    </div>
+                                <input id="search-radio" type="radio" value="search" name="way">
+                                <label for="search-radio"> Search</label>
+                                <div class="search-wrapper" id="search">
+                                    <input type="text" class="search-input" id="searchReq" placeholder="Free search">
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="liked-jokes-box">
+                    </form>
+                </div>
+            </section>
 
-    </div>
+            <button class="get-joke-btn btn">Get a joke</button>
 
-</div>
+            <div class="jokes" id="jokeBox">
+
+            </div>
+
+        </div>
+    </main>
+
+    <section class="favourite-section">
+        <div class="burger-wrapper">
+            <div class="burger">
+                <span></span>
+            </div>
+        </div>
+        <div class="favourite-inner">
+            <div class="liked-jokes-box">
+
+            </div>
+        </div>
+    </section>
+
+</section>
+
 </body>
 </html>

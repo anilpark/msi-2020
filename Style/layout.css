@@ -1,11 +1,20 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: Roboto, serif;
+  font-style: normal;
+  color: #333333; }
+
+a {
+  color: #8EA7FF; }
+
+.grey-text {
+  color: #ABABAB; }
 
 /*  BURGER */
 .burger-wrapper {
-  width: 100%;
+  width: 150px;
   height: 50px;
   display: flex;
   justify-content: end;
@@ -18,18 +27,18 @@
   display: none; }
   @media (max-width: 767px) {
     .burger {
-      right: 0;
-      top: 0;
+      left: 0;
+      top: 40px;
       display: inline-block;
-      width: 50px;
-      height: 50px;
-      background-color: #fff;
+      width: 28px;
+      height: 28px;
+      background-color: #000;
       border-radius: 50%;
       position: absolute;
       cursor: pointer;
       align-self: end;
       justify-self: end; } }
-  .burger span:before, .burger span:after {
+  .burger span::before, .burger span::after {
     content: '';
     display: block;
     transition: 0.2s;
@@ -40,15 +49,26 @@
     margin-left: -10px;
     width: 20px;
     height: 2px;
-    background-color: #222; }
+    background-color: #fff; }
   .burger span::before {
     transform: translateY(-5px); }
   .burger span::after {
     transform: translateY(5px); }
 
-.burger-active span:before {
+.burger::after {
+  content: 'Favourite';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 38px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ABABAB; }
+
+.burger-active span::before {
   transform: rotate(45deg); }
-.burger-active span:after {
+.burger-active span::after {
   transform: rotate(-45deg); }
 
 /* END BURGER */
@@ -57,8 +77,7 @@
 
 .wrapper {
   display: flex;
-  width: 100%;
-  height: 100vh; }
+  width: 100%; }
   .wrapper .container {
     display: flex;
     width: 100%;
@@ -67,25 +86,20 @@
 
 main {
   width: 100%;
-  position: relative; }
+  position: relative;
+  overflow: scroll; }
   main h1 {
-    font-family: Roboto, serif;
-    font-style: normal;
     font-weight: bold;
     font-size: 32px;
     line-height: 44px; }
   main h2 {
-    font-family: Roboto, serif;
-    font-style: normal;
     font-weight: bold;
     font-size: 20px;
     line-height: 28px;
     margin-bottom: 43px; }
   main h3 {
     margin-top: 40px;
-    margin-bottom: 78px;
-    font-family: Roboto, serif;
-    font-style: normal;
+    margin-bottom: 28px;
     font-weight: 500;
     font-size: 24px;
     line-height: 44px; }
@@ -105,7 +119,7 @@ main {
   margin: 50px auto; }
 
 .liked-jokes-box {
-  margin-top: 100px;
+  margin-top: 50px;
   padding: 20px; }
 
 .search-wrapper {
@@ -149,8 +163,6 @@ main {
     display: none; }
   .menu-input-item label {
     height: 26px;
-    font-family: Roboto, serif;
-    font-style: normal;
     font-weight: normal;
     font-size: 18px;
     display: flex;
@@ -184,8 +196,6 @@ main {
 .categories-box input[type="radio"] {
   display: none; }
 .categories-box label {
-  font-family: Roboto, serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   letter-spacing: 2px;
@@ -201,6 +211,7 @@ main {
   border: 2px solid #F8F8F8; }
 .categories-box input[type="radio"]:checked + label {
   display: inline-block;
+  color: #333333;
   background-color: #F8F8F8; }
 .categories-box label:before, .categories-box label:after, .categories-box input[type="radio"]:checked + label::after {
   display: none; }
@@ -234,20 +245,4 @@ main {
   .hidden {
     display: none; } }
 
-.heart {
-  fill: transparent;
-  width: 25px;
-  height: 25px;
-  stroke: #FF6767;
-  stroke-width: 2px; }
-
-.filled {
-  fill: red; }
-
-.heart-wrapper {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  cursor: pointer; }
-
-/*# sourceMappingURL=Main.css.map */
+/*# sourceMappingURL=layout.css.map */
