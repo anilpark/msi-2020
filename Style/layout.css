@@ -229,7 +229,8 @@ main {
 
 .favourite-inner {
   min-width: 480px;
-  width: 480px; }
+  width: 480px;
+  height: 100vh; }
   @media (max-width: 767px) {
     .favourite-inner {
       min-width: 50%;
