@@ -103,11 +103,6 @@ function test() {
 function loaded() {
     const api = new API();
 
-    try {
-        categories.get().forEach( item => {
-            insertCategories(item);
-        } );
-    }finally {
         api.getCategories().then( res => {
                 clearCategories();
                 res.forEach( item => {
@@ -116,8 +111,7 @@ function loaded() {
 
                 categories.set(res);
             }
-        )
-    }
+        );
 
     let btn = document.querySelector('.get-joke-btn');
     btn.onclick = showJokes;
