@@ -308,6 +308,8 @@ main{
 
 .favourite-section{
   background: #F8F8F8;
+  height: 100vh;
+
 
   @media (max-width: 767px) {
     position: fixed;
@@ -320,7 +322,6 @@ main{
 .favourite-inner{
   min-width: 480px;
   width: 480px;
-  height: 100vh;
 
   @media (max-width: 767px) {
     min-width: 50%;
