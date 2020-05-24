@@ -1,12 +1,12 @@
 .liked-joke-container {
   position: relative;
-  margin-top: 20px;
+  margin: 20px auto;
+  width: 400px;
   box-shadow: 0 0 6px 0 black;
   border-radius: 10px;
   background-color: #fff;
   display: flex;
   padding: 47px 20px 20px;
-  margin-bottom: 20px;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px; }
@@ -52,7 +52,8 @@
   padding: 67px 40px;
   margin-bottom: 20px;
   font-size: 18px;
-  line-height: 26px; }
+  line-height: 26px;
+  overflow: hidden; }
   .joke-container .joke-icon {
     display: flex;
     align-items: center;
