@@ -118,7 +118,7 @@ function loaded() {
 
     insertLiked();
 
-    document.querySelector('.container').style.display = 'block';
+    document.querySelector('.wrapper').style.display = 'flex';
 
     test();
 }

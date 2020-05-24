@@ -76,7 +76,7 @@ a {
   width: 100%; }
 
 .wrapper {
-  display: flex;
+  display: none;
   width: 100%; }
   .wrapper .container {
     display: flex;
