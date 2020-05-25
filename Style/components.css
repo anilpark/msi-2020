@@ -1,7 +1,7 @@
 .liked-joke-container {
   position: relative;
   margin: 20px auto;
-  width: 400px;
+  width: 100%;
   box-shadow: 0 0 6px 0 black;
   border-radius: 10px;
   background-color: #fff;
@@ -15,19 +15,6 @@
     right: 20px;
     top: 20px;
     cursor: pointer; }
-  .liked-joke-container .joke-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    overflow: hidden; }
-  .liked-joke-container .joke-inner {
-    margin-left: 20px;
-    width: 100%; }
   .liked-joke-container .joke-text {
     margin: 25px 0; }
   .liked-joke-container .joke-category {
@@ -39,10 +26,6 @@
     line-height: 14px;
     letter-spacing: 2px;
     text-transform: uppercase; }
-  .liked-joke-container .joke-inner-bottom {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; }
 
 .joke-container {
   display: flex;
@@ -54,19 +37,6 @@
   font-size: 18px;
   line-height: 26px;
   overflow: hidden; }
-  .joke-container .joke-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    overflow: hidden; }
-  .joke-container .joke-inner {
-    margin-left: 20px;
-    width: 100%; }
   .joke-container .joke-text {
     margin: 25px 0; }
   .joke-container .joke-category {
@@ -78,10 +48,6 @@
     line-height: 14px;
     letter-spacing: 2px;
     text-transform: uppercase; }
-  .joke-container .joke-inner-bottom {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; }
   .joke-container .heart-wrapper {
     position: absolute;
     right: 40px;
@@ -107,5 +73,25 @@
 
 .filled {
   fill: #FF6767; }
+
+.joke-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden; }
+
+.joke-inner-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+
+.joke-inner {
+  margin-left: 20px;
+  width: 100%; }
 
 /*# sourceMappingURL=components.css.map */

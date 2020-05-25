@@ -72,7 +72,7 @@ a{
 .burger{
   display: none;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     left: 0;
     top: 40px;
     display: inline-block;
@@ -309,27 +309,30 @@ main{
 .favourite-section{
   background: #F8F8F8;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
+    width: 50%;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 5;
   }
+
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 }
 
 .favourite-inner{
-  min-width: 480px;
-  width: 480px;
   height: 100vh;
+  min-width: 480px;
 
-  @media (max-width: 767px) {
-    min-width: 50%;
+  @media (max-width: 768px) {
     display: none;
+    min-width: 100%;
   }
 
   @media (max-width: 374px) {
     display: none;
-    width: 100%;
   }
 
   overflow: scroll;

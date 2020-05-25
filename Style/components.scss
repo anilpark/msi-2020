@@ -1,7 +1,7 @@
 .liked-joke-container{
   position: relative;
   margin: 20px auto;
-  width: 400px;
+  width: 100%;
   box-shadow: 0 0 6px 0 black;
   border-radius: 10px;
   background-color: #fff;
@@ -19,22 +19,6 @@
     cursor: pointer;
   }
 
-  .joke-icon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  .joke-inner{
-    margin-left: 20px;
-    width: 100%;
-  }
 
   .joke-text{
     margin: 25px 0;
@@ -51,11 +35,6 @@
     text-transform: uppercase;
   }
 
-  .joke-inner-bottom{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
 .joke-container{
@@ -69,23 +48,6 @@
   line-height: 26px;
   overflow: hidden;
 
-  .joke-icon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  .joke-inner{
-    margin-left: 20px;
-    width: 100%;
-  }
-
   .joke-text{
     margin: 25px 0;
   }
@@ -99,12 +61,6 @@
     line-height: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-  }
-
-  .joke-inner-bottom{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
   }
 
   .heart-wrapper{
@@ -137,4 +93,28 @@
 
 .filled{
   fill: #FF6767;
+}
+
+.joke-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.joke-inner-bottom{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.joke-inner{
+  margin-left: 20px;
+  width: 100%;
 }
