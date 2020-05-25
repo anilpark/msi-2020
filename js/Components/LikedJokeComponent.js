@@ -7,11 +7,10 @@ export class LikedJokeComponent {
             <div class="joke-category">${obj.getJokeCategory()} </div>`
 
         this.$el.innerHTML = `
-        <div class="joke-icon">
+                <div class="joke-icon">
                         <img src="${obj.icon_url}" alt="">
                  </div>
                 <div class="joke-inner">
-                    
                     <div class="joke-id">
                        <span class="grey-text">ID:</span><a target="_blank" href="https://api.chucknorris.io/jokes/${obj.id}">${obj.id}</a>
                     </div>
@@ -41,7 +40,7 @@ export class LikedJokeComponent {
         }
 
         this.$el.className = 'liked-joke-container';
-        this.$el.id = `liked-joke-${obj.id}`;
+        this.$el.id = `liked-joke-${obj.id}`; //for removing
 
         this.$el.prepend(this.$like);
 

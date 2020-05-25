@@ -1,7 +1,6 @@
 export class JokeComponent {
     constructor(obj) {
         this.$el = document.createElement('div');
-        this.$el.id = `joke-${obj.id}`;
 
         this.$like = document.createElement('div');
 
@@ -26,7 +25,6 @@ export class JokeComponent {
                         <img src="${obj.icon_url}" alt="">
                  </div>
                 <div class="joke-inner">
-                    
                     <div class="joke-id">
                        <span class="grey-text">ID:</span><a target="_blank" href="https://api.chucknorris.io/jokes/${obj.id}">${obj.id}</a>
                     </div>
@@ -39,9 +37,11 @@ export class JokeComponent {
                         </div>
                        ${this.$categoryEl}
                     </div>
-                </div>
-            `;
+                </div>`;
+
         this.$el.className = 'joke-container';
+        this.$el.id = `joke-${obj.id}`;//to toggle like button
+
         this.$el.prepend(this.$like);
 
         return this.$el;

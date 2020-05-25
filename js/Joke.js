@@ -13,6 +13,7 @@ export class Joke {
     }
 
     getLastUpdate(){
+        //need rewrite: doesn't work in safari
         return Math.round( +Date.now()/(3600*1000) - (+new Date(this.updated_at))/(3600*1000) );
     }
 

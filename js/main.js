@@ -2,21 +2,6 @@ import {Joke} from "./Joke.js";
 
 window.onload = loaded;
 
-$('.burger').on('click', function(e) {
-    e.preventDefault;
-    $(this).toggleClass('burger-active');
-    $('.favourite-inner').toggleClass('shown');
-    $('.main-container').toggleClass('hidden');
-    $('.bg-shadow').toggleClass('shown');
-});
-
-const categories = {
-    get: () => JSON.parse(localStorage.getItem('categories')),
-    set: (arr) => {
-        localStorage.setItem('categories', JSON.stringify(arr))
-    }
-}
-
 function API() {
     const URLs = {
         random : () =>' https://api.chucknorris.io/jokes/random',
@@ -61,6 +46,7 @@ function showJokes() {
     }
 }
 
+//better call this via setInterval to update existing jokes upd-time
 function insertLiked() {
     let liked = JSON.parse( localStorage.getItem('liked') );
     if(liked) liked.forEach(item => {
@@ -96,25 +82,26 @@ function insertCategories(value) {
     div.append(label);
 }
 
-function test() {
-    showJokes();
-}
-
 function loaded() {
     const api = new API();
 
-        api.getCategories().then( res => {
-                clearCategories();
-                res.forEach( item => {
-                    insertCategories(item);
-                } );
-
-                categories.set(res);
-            }
-        );
+    api.getCategories().then( res => {
+        clearCategories();
+        res.forEach( item => {
+            insertCategories(item);
+        } );
+    });
 
     let btn = document.querySelector('.get-joke-btn');
     btn.onclick = showJokes;
+
+    $('.burger').on('click', function(e) {
+        e.preventDefault;
+        $(this).toggleClass('burger-active');
+        $('.favourite-inner').toggleClass('shown');
+        $('.main-container').toggleClass('hidden');
+        $('.bg-shadow').toggleClass('shown');
+    });
 
     insertLiked();
 }
