@@ -187,7 +187,6 @@ main{
 }
 
 .liked-jokes-box{
-  margin-top: 50px;
   padding: 20px;
 }
 
@@ -309,6 +308,18 @@ main{
 .favourite-section{
   background: #F8F8F8;
 
+  .fav-lbl{
+    margin: 40px 40px 0 40px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
   @media (max-width: 768px) {
     width: 50%;
     position: fixed;
@@ -329,6 +340,7 @@ main{
   @media (max-width: 768px) {
     display: none;
     min-width: 100%;
+    margin-top: 70px;
   }
 
   @media (max-width: 374px) {
