@@ -11,15 +11,16 @@
     <script defer type="module" src="js/main.js"></script>
 </head>
 <body>
+<div class="bg-shadow"></div>
 <section class="wrapper">
     <main>
-        <div class="bg-shadow"></div>
-
         <div class="container">
             <header class="header">
                 <h3>MSI 2020</h3>
+                    <div class="burger">
+                        <span></span>
+                    </div>
             </header>
-            <section class="content-section">
                 <h1>Hey!</h1>
                 <h2>Let’s try to find a joke for you:</h2>
                 <div class="menu">
@@ -55,7 +56,6 @@
 
                     </form>
                 </div>
-            </section>
 
             <button class="get-joke-btn btn">Get a joke</button>
 
@@ -66,20 +66,14 @@
         </div>
     </main>
 
-    <section class="favourite-section">
-        <div class="burger-wrapper">
-            <div class="burger">
-                <span></span>
-            </div>
-        </div>
-        <h2 class="fav-lbl grey-text">Favourite</h2>
+    <aside class="favourite-section">
+            <h2 class="fav-lbl grey-text">Favourite</h2>
         <div class="favourite-inner">
             <div class="liked-jokes-box">
 
             </div>
         </div>
-    </section>
-
+    </aside>
 </section>
 
 </body>

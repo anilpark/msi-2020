@@ -98,7 +98,7 @@ function loaded() {
     $('.burger').on('click', function(e) {
         e.preventDefault;
         $(this).toggleClass('burger-active');
-        $('.favourite-inner').toggleClass('shown');
+        $('.favourite-section').toggleClass('shown');
         $('.main-container').toggleClass('hidden');
         $('.bg-shadow').toggleClass('shown');
     });
