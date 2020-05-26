@@ -59,7 +59,9 @@ h3 {
 
 main {
   width: 75%;
-  position: relative; }
+  position: relative;
+  height: 100vh;
+  overflow: scroll; }
   @media (max-width: 768px) {
     main {
       width: 100%; } }
@@ -79,8 +81,7 @@ main {
   margin: 50px auto; }
 
 .liked-jokes-box {
-  padding: 20px;
-  z-index: 4; }
+  padding: 20px; }
 
 .search-wrapper {
   display: none;
@@ -179,8 +180,7 @@ main {
 .favourite-section {
   background: #F8F8F8;
   width: 25%;
-  min-width: 480px;
-  height: 100vh; }
+  min-width: 480px; }
   .favourite-section .fav-lbl {
     margin-left: 40px;
     margin-top: 40px;
@@ -193,17 +193,19 @@ main {
         display: none; } }
   @media (max-width: 768px) {
     .favourite-section {
-      width: 50%;
+      min-width: 0;
+      width: 480px;
       position: fixed;
       right: 0;
       top: 0;
       z-index: 3;
       display: none; } }
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     .favourite-section {
       width: 100%; } }
 
 .favourite-inner {
+  padding: 20px;
   height: calc(100vh - 84px);
   overflow: scroll;
   z-index: 4; }
@@ -211,6 +213,8 @@ main {
     .favourite-inner {
       width: 100%;
       margin-top: 84px; } }
+  .favourite-inner :first-child {
+    margin-top: 0; }
 
 .burger {
   display: none;

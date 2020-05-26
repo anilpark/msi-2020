@@ -38,7 +38,7 @@ export class Joke {
     }
 
     insertToLikedList(){
-        document.querySelector('.liked-jokes-box').append(new LikedJokeComponent(this));
+        document.querySelector('.favourite-inner').append(new LikedJokeComponent(this));
     }
 
     removeFromLikedList(){
