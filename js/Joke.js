@@ -1,5 +1,5 @@
-import {JokeComponent} from "./Components/JokeComponent.js";
-import {LikedJokeComponent} from "./Components/LikedJokeComponent.js";
+import {FoundJokeComponent} from "./JokeComponent.js";
+import {LikedJokeComponent} from "./JokeComponent.js";
 
 export class Joke {
     constructor(joke, liked) {
@@ -9,12 +9,12 @@ export class Joke {
     }
 
     insert(){
-        document.querySelector('.found-jokes-box').append(new JokeComponent(this));
+        document.querySelector('.found-jokes-box').append(new FoundJokeComponent(this));
     }
 
     getLastUpdate(){
         //need rewrite: doesn't work in safari
-        return Math.round( +Date.now()/(3600*1000) - (+new Date(this.updated_at))/(3600*1000) );
+        return Math.round( +Date.now()/(3600*1000) - (+Date.parse(this.updated_at))/(3600*1000) );
     }
 
     updateLikedState(){

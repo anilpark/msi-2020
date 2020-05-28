@@ -1,13 +1,8 @@
-export class JokeComponent {
+class JokeComponent {
     constructor(obj) {
         this.$el = document.createElement('div');
 
         this.$like = document.createElement('div');
-
-        this.$like.innerHTML = `
-            <svg class="heart">
-                 <use  xlink:href="images/heart.svg#heart-icon"></use>
-            </svg>`;
 
         this.$like.className = 'heart-wrapper';
         this.$like.onclick = function () {
@@ -38,12 +33,37 @@ export class JokeComponent {
                        ${this.$categoryEl}
                     </div>
                 </div>`;
+    }
+}
+
+export class LikedJokeComponent extends JokeComponent{
+    constructor(obj){
+        super(obj);
+
+        this.$like.innerHTML = `
+            <svg class="heart filled">
+                 <use  xlink:href="images/heart.svg#heart-icon"></use>
+            </svg>`;
+        this.$el.prepend(this.$like);
+
+        this.$el.className = 'liked-joke-container';
+        this.$el.id = `liked-joke-${obj.id}`; //for removing
+        return this.$el;
+    }
+}
+
+export class FoundJokeComponent extends JokeComponent{
+    constructor(obj){
+        super(obj);
+
+        this.$like.innerHTML = `
+            <svg class="heart">
+                 <use  xlink:href="images/heart.svg#heart-icon"></use>
+            </svg>`;
+        this.$el.prepend(this.$like);
 
         this.$el.className = 'joke-container';
         this.$el.id = `joke-${obj.id}`;//to toggle like button
-
-        this.$el.prepend(this.$like);
-
         return this.$el;
     }
 }
