@@ -56,7 +56,7 @@ function insertLiked() {
 }
 
 function clearJokeBox(){
-    document.getElementById('jokeBox').innerHTML = '';
+    document.querySelector('.found-jokes-box').innerHTML = '';
 }
 
 function clearCategories() {

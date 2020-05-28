@@ -33,7 +33,7 @@ export class JokeComponent {
                     </div>
                     <div class="joke-inner-bottom">
                         <div class="joke-date">
-                            <span class="grey-text">Last update: <strong class="grey-text">${obj.getLastUpdate()} hours ago</strong></span>
+                            <span class="grey-text">Last update: <strong class="grey-text"> ${obj.getLastUpdate()} hours ago</strong></span>
                         </div>
                        ${this.$categoryEl}
                     </div>

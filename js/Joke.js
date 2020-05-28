@@ -9,7 +9,7 @@ export class Joke {
     }
 
     insert(){
-        document.getElementById('jokeBox').append(new JokeComponent(this));
+        document.querySelector('.found-jokes-box').append(new JokeComponent(this));
     }
 
     getLastUpdate(){

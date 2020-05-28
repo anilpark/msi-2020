@@ -17,7 +17,8 @@
     top: 20px;
     cursor: pointer; }
   .liked-joke-container .joke-text {
-    margin: 25px 0; }
+    margin: 25px 0;
+    overflow: hidden; }
   .liked-joke-container .joke-category {
     padding: 6px 20px;
     background-color: #fff;
