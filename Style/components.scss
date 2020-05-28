@@ -23,7 +23,6 @@
 
   .joke-text{
     margin: 25px 0;
-    overflow: hidden;
   }
 
   .joke-category{
@@ -63,6 +62,10 @@
     line-height: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
+
+    @media (max-width: 380px) {
+      width: auto;
+    }
   }
 
   .heart-wrapper{
@@ -70,6 +73,12 @@
     right: 40px;
     top: 40px;
     cursor: pointer;
+
+    @media (max-width: 380px) {
+      right: 20px;
+      top: 20px;
+    }
+
   }
 }
 
@@ -77,6 +86,9 @@
   font-weight: normal;
   font-size: 10px;
   line-height: 14px;
+  @media (max-width: 380px) {
+    margin-bottom: 10px;
+  }
 }
 
 .joke-id{
@@ -114,9 +126,16 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 380px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .joke-inner{
   margin-left: 20px;
   width: 100%;
+  overflow: hidden;
 }
