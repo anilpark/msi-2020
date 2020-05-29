@@ -23,10 +23,13 @@ function API() {
     }
 }
 
-function showJokes() {
-    let way = document.forms.form.way.value;
+function findJokes() {
+    const way = document.forms.form.way.value;
 
     const api = new API();
+
+    //to prevent error if no category selected or input is empty
+    if(way !== 'random' && !getParam()) return;
 
     api.getJoke(way, getParam()).then(res => {
         clearJokeBox();
@@ -48,7 +51,7 @@ function showJokes() {
 
 //better call this via setInterval to update existing jokes upd-time
 function insertLiked() {
-    let liked = JSON.parse( localStorage.getItem('liked') );
+    const liked = JSON.parse( localStorage.getItem('liked') );
     if(liked) liked.forEach(item => {
         let likedJoke = new Joke(item);
         likedJoke.insertToLikedList();
@@ -57,13 +60,6 @@ function insertLiked() {
 
 function clearJokeBox(){
     document.querySelector('.found-jokes-box').innerHTML = '';
-}
-
-function clearCategories() {
-    document.getElementById('categories-box').innerHTML = `
-    <form name="categories">
-    </form>
-   `
 }
 
 function insertCategories(value) {
@@ -86,14 +82,13 @@ function loaded() {
     const api = new API();
 
     api.getCategories().then( res => {
-        clearCategories();
         res.forEach( item => {
             insertCategories(item);
         } );
     });
 
     let btn = document.querySelector('.get-joke-btn');
-    btn.onclick = showJokes;
+    btn.onclick = findJokes;
 
     $('.burger').on('click', function(e) {
         e.preventDefault;
