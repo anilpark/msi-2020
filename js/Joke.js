@@ -17,8 +17,10 @@ export class Joke {
     }
 
     getLastUpdate(){
-        //need rewrite: doesn't work in safari
-        return Math.round( +Date.now()/(3600*1000) - (+Date.parse(this.updated_at))/(3600*1000) );
+        const ONE_HOUR = 3600*1000;
+
+        //without 'replace' doesn't work in safari
+        return Math.round( +Date.now()/ONE_HOUR - (+Date.parse(this.updated_at.replace(/ /g,"T")))/ONE_HOUR );
     }
 
     updateLikedState(){
