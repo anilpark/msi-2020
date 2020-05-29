@@ -2,10 +2,14 @@ import {FoundJokeComponent} from "./JokeComponent.js";
 import {LikedJokeComponent} from "./JokeComponent.js";
 
 export class Joke {
-    constructor(joke, liked) {
+    constructor(joke) {
         for(let key in joke) this[key] = joke[key]; //we don't expect unused fields from API
 
-        this.liked = liked || false;
+        //checking if the joke is already liked;
+        const liked = JSON.parse( localStorage.getItem('liked') );
+        if(liked) liked.forEach(item => {
+            if(item.id === this.id) this.liked = item.liked;
+        });
     }
 
     insert(){

@@ -1,8 +1,20 @@
 class JokeComponent {
     constructor(obj) {
         this.$el = document.createElement('div');
-
         this.$like = document.createElement('div');
+
+        //I'll simplify it
+        if(obj.liked){
+            this.$like.innerHTML = `
+            <svg class="heart filled">
+                 <use  xlink:href="images/heart.svg#heart-icon"></use>
+            </svg>`;
+        }else {
+            this.$like.innerHTML = `
+            <svg class="heart">
+                 <use  xlink:href="images/heart.svg#heart-icon"></use>
+            </svg>`;
+        }
 
         this.$like.className = 'heart-wrapper';
         this.$like.onclick = function () {
@@ -33,6 +45,8 @@ class JokeComponent {
                        ${this.$categoryEl}
                     </div>
                 </div>`;
+
+        this.$el.prepend(this.$like);
     }
 }
 
@@ -40,14 +54,9 @@ export class LikedJokeComponent extends JokeComponent{
     constructor(obj){
         super(obj);
 
-        this.$like.innerHTML = `
-            <svg class="heart filled">
-                 <use  xlink:href="images/heart.svg#heart-icon"></use>
-            </svg>`;
-        this.$el.prepend(this.$like);
-
         this.$el.className = 'liked-joke-container';
         this.$el.id = `liked-joke-${obj.id}`; //for removing
+
         return this.$el;
     }
 }
@@ -56,14 +65,9 @@ export class FoundJokeComponent extends JokeComponent{
     constructor(obj){
         super(obj);
 
-        this.$like.innerHTML = `
-            <svg class="heart">
-                 <use  xlink:href="images/heart.svg#heart-icon"></use>
-            </svg>`;
-        this.$el.prepend(this.$like);
-
         this.$el.className = 'joke-container';
         this.$el.id = `joke-${obj.id}`;//to toggle like button
+
         return this.$el;
     }
 }

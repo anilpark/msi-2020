@@ -50,7 +50,7 @@ function showJokes() {
 function insertLiked() {
     let liked = JSON.parse( localStorage.getItem('liked') );
     if(liked) liked.forEach(item => {
-        let likedJoke = new Joke(item, true);
+        let likedJoke = new Joke(item);
         likedJoke.insertToLikedList();
     });
 }
