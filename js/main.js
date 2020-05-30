@@ -87,7 +87,7 @@ function loaded() {
         } );
     });
 
-    let btn = document.querySelector('.get-joke-btn');
+    const btn = document.querySelector('.get-joke-btn');
     btn.onclick = findJokes;
 
     $('.burger').on('click', function(e) {
