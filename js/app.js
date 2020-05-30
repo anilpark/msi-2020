@@ -1,10 +1,9 @@
 import {Joke} from "./Joke.js";
-
-window.onload = loaded;
+const ONE_HOUR = 3600*1000;
 
 function API() {
     const URLs = {
-        random : () =>' https://api.chucknorris.io/jokes/random',
+        random : () => 'https://api.chucknorris.io/jokes/random',
         category : category => `https://api.chucknorris.io/jokes/random?category=${category}`,
         search : request => `https://api.chucknorris.io/jokes/search?query=${request}`
     }
@@ -23,33 +22,17 @@ function API() {
     }
 }
 
-function findJokes() {
-    const way = document.forms.form.way.value;
-
+function findJokes(type, param) {
     const api = new API();
 
-    //to prevent error if no category selected or input is empty
-    if(way !== 'random' && !getParam()) return;
-
-    api.getJoke(way, getParam()).then(res => {
+    api.getJoke(type, param).then(res => {
         clearJokeBox();
 
         if(res.total) res.result.forEach(item => new Joke(item).insert())
         else new Joke(res).insert();
     })
-
-    function getParam() {
-        switch (way) {
-            case 'category':
-                return document.forms.form.category.value;
-            case 'search':
-                return document.querySelector('#searchReq').value;
-            default: return;
-        }
-    }
 }
 
-//better call this via setInterval to update existing jokes upd-time
 function insertLiked() {
     const liked = JSON.parse( localStorage.getItem('liked') );
     if(liked) liked.forEach(item => {
@@ -58,13 +41,9 @@ function insertLiked() {
     });
 }
 
-function clearJokeBox(){
-    document.querySelector('.found-jokes-box').innerHTML = '';
-}
-
-function insertCategories(value) {
+function insertCategory(value) {
     let input = document.createElement('input');
-    let div = document.querySelector('#categories-box');
+    let div = document.querySelector('.categories-box');
     let label = document.createElement('label');
 
     input.type = 'radio';
@@ -78,25 +57,44 @@ function insertCategories(value) {
     div.append(label);
 }
 
+function clearJokeBox(){
+    document.querySelector('.found-jokes-box').innerHTML = '';
+}
+
 function loaded() {
     const api = new API();
 
     api.getCategories().then( res => {
         res.forEach( item => {
-            insertCategories(item);
+            insertCategory(item);
         } );
+        document.forms.form.category[0].checked = true;
     });
 
-    const btn = document.querySelector('.get-joke-btn');
-    btn.onclick = findJokes;
-
-    $('.burger').on('click', function(e) {
-        e.preventDefault;
+    $('.burger').on('click', function() {
         $(this).toggleClass('burger-active');
         $('.favourite-section').toggleClass('shown');
         $('.main-container').toggleClass('hidden');
         $('.bg-shadow').toggleClass('shown');
     });
 
+    $("form").on("submit", function(e){
+        e.preventDefault();
+
+        const type = document.forms.form.type.value;
+        const param = type !== 'random' ? document.forms.form[type].value : 'random';
+
+        findJokes(type, param);
+    });
+
+    //submit is allowed when the input is empty despite on 'minlength'
+    $("form").on("change", function(){
+        const type = document.forms.form.type.value;
+        document.forms.form.search.required = type === 'search';
+    });
+
     insertLiked();
+    setInterval(insertLiked, ONE_HOUR); //to update 'last_upd' in favourites
 }
+
+window.onload = loaded;
