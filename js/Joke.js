@@ -1,5 +1,6 @@
 import {FoundJokeComponent} from "./JokeComponent.js";
 import {LikedJokeComponent} from "./JokeComponent.js";
+import {ErrorJokeComponent} from "./JokeComponent.js";
 
 export class Joke {
     constructor(joke) {
@@ -14,6 +15,10 @@ export class Joke {
 
     insert(){
         document.querySelector('.found-jokes-box').append(new FoundJokeComponent(this));
+    }
+
+    insertError(){
+        document.querySelector('.found-jokes-box').append(new ErrorJokeComponent(this));
     }
 
     getLastUpdate(){

@@ -1,5 +1,15 @@
 import {Joke} from "./Joke.js";
 const ONE_HOUR = 3600*1000;
+const errJoke = {
+    categories: [],
+    created_at: "2020-01-05 13:42:25.352697",
+    icon_url: "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+    id: "Opps, something went wrong",
+    error: true,
+    updated_at: "2022-01-05 13:42:25.352697",
+    url: "https://api.chucknorris.io/jokes/DlVTalYbSIew7VHzXrZ5JA",
+    value: "Only Chuck Norris can laugh at jokes about Chuck Norris"
+}
 
 function API() {
     const URLs = {
@@ -28,8 +38,12 @@ function findJokes(type, param) {
     api.getJoke(type, param).then(res => {
         clearJokeBox();
 
-        if(res.total) res.result.forEach(item => new Joke(item).insert())
-        else new Joke(res).insert();
+        try{
+            if(res.total) res.result.forEach(item => new Joke(item).insert())
+            else new Joke(res).insert();
+        }catch (e) {
+            new Joke(errJoke).insertError();
+        }
     })
 }
 

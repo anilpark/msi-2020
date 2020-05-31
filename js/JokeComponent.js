@@ -3,18 +3,10 @@ class JokeComponent {
         this.$el = document.createElement('div');
         this.$like = document.createElement('div');
 
-        //I'll simplify it
-        if(obj.liked){
-            this.$like.innerHTML = `
-            <svg class="heart filled">
+        this.$like.innerHTML = `
+            <svg class="heart${obj.liked ? ' filled' : ''}">
                  <use  xlink:href="images/heart.svg#heart-icon"></use>
             </svg>`;
-        }else {
-            this.$like.innerHTML = `
-            <svg class="heart">
-                 <use  xlink:href="images/heart.svg#heart-icon"></use>
-            </svg>`;
-        }
 
         this.$like.className = 'heart-wrapper';
         this.$like.onclick = function () {
@@ -33,7 +25,7 @@ class JokeComponent {
                  </div>
                 <div class="joke-inner">
                     <div class="joke-id">
-                       <span class="grey-text">ID:</span><a target="_blank" href="https://api.chucknorris.io/jokes/${obj.id}">${obj.id}</a>
+                       <span class="grey-text">ID: </span><a target="_blank" href="https://api.chucknorris.io/jokes/${obj.id}">${obj.id}</a>
                     </div>
                     <div class="joke-text">
                         <span>${obj.value}</span>
@@ -46,7 +38,7 @@ class JokeComponent {
                     </div>
                 </div>`;
 
-        this.$el.prepend(this.$like);
+        if(!obj.error) this.$el.prepend(this.$like);
     }
 }
 
@@ -67,6 +59,17 @@ export class FoundJokeComponent extends JokeComponent{
 
         this.$el.className = 'joke-container';
         this.$el.id = `joke-${obj.id}`;//to toggle like button
+
+        return this.$el;
+    }
+}
+
+export class ErrorJokeComponent extends JokeComponent{
+    constructor(obj) {
+        super(obj);
+
+        this.$el.className = 'error-joke-container';
+        this.$el.id = `joke-${obj.id}`;
 
         return this.$el;
     }
